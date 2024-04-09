@@ -1,0 +1,97 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Category index{% endblock %}
+
+{% block body %}
+<style>
+    .btn-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .table {
+        margin-top: 20px;
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .table th,
+    .table td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: left;
+    }
+    .table th {
+        background-color: #f2f2f2;
+    }
+    .no-records {
+        text-align: center;
+        padding: 20px;
+        font-style: italic;
+        color: #888;
+    }
+    .create-btn {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+    .create-btn a {
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 4px;
+    }
+
+    .show-btn,
+    .edit-btn {
+        padding: 5px 10px;
+        background-color: #28a745; /* Màu xanh lá */
+        color: #fff;
+        text-decoration: none;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .show-btn:hover,
+    .edit-btn:hover {
+        background-color: #218838; /* Màu xanh lá tối */
+    }
+    
+</style>
+<div class="btn-center">
+    <h1>Category Management</h1>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th style="background-color: green";>Id</th>
+            <th style="background-color: green";>Name</th>
+            <th style="background-color: green";>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for category in categories %}
+        <tr>
+            <td>{{ category.id }}</td>
+            <td>{{ category.name }}</td>
+            <td>
+                <a href="{{ path('app_category_show', {'id': category.id}) }}" class="show-btn">show</a>
+                <a href="{{ path('app_category_edit', {'id': category.id}) }}" class="edit-btn">edit</a>
+            </td>
+
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="3" class="no-records">No records found</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<div class="create-btn">
+    <a href="{{ path('app_category_new') }}" class="btn btn-success">Create new</a>
+</div>
+{% endblock %}

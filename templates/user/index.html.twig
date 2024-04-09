@@ -1,0 +1,80 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}User index{% endblock %}
+
+{% block body %}
+<style>
+    .table {
+        margin-top: 20px;
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .table th,
+    .table td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: left;
+    }
+    .table th {
+        background-color: #f2f2f2;
+    }
+    .no-records {
+        text-align: center;
+        padding: 20px;
+        font-style: italic;
+        color: #888;
+    }
+
+    /* Additional CSS for Show and Edit buttons */
+
+    .show-btn,
+    .edit-btn {
+        padding: 6px 12px; /* Adjust padding as needed */
+        background-color: #4caf50; /* Green color */
+        color: #fff; /* White text color */
+        text-decoration: none;
+        border-radius: 4px;
+        margin-right: 5px; /* Add some margin between buttons */
+    }
+
+    .show-btn:hover,
+    .edit-btn:hover {
+        background-color: #45a049; /* Darker shade of green on hover */
+    }
+
+</style>
+<h1>User Management</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th style="background-color:green;">Id</th>
+            <th style="background-color:green;">Email</th>
+            <th style="background-color:green;">Roles</th>
+            <th style="background-color:green;">Position</th>
+            <th style="background-color:green;">Password</th>
+            <th style="background-color:green;">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+            <td>{{ user.position ? user.position: '' }}</td>
+            <td>{{ user.password }}</td>
+           <td>
+                <a href="{{ path('app_user_show', {'id': user.id}) }}" class="show-btn">show</a>
+                <a href="{{ path('app_user_edit', {'id': user.id}) }}" class="edit-btn">edit</a>
+            </td>
+
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="6" class="no-records">No records found</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

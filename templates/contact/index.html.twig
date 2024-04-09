@@ -1,0 +1,80 @@
+{% extends 'base_admin.html.twig' %}
+
+
+{% block body %}
+<style>
+    .table {
+        margin-top: 20px;
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .table th,
+    .table td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: left;
+    }
+    .table th {
+        background-color: #f2f2f2;
+    }
+    .no-records {
+        text-align: center;
+        padding: 20px;
+        font-style: italic;
+        color: #888;
+    }
+
+    .show-btn {
+    padding: 5px 10px;
+    background-color: #28a745; /* Màu xanh lá */
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .show-btn:hover {
+        background-color: #218838; /* Màu xanh lá tối */
+    }
+
+</style>
+<h1 style=" text-align: center;">Contact mamager</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th style="background-color:green;">Id</th>
+            <th style="background-color:green;">First Name</th>
+            <th style="background-color:green;">Last Name</th>
+            <th style="background-color:green;">Email</th>
+            <th style="background-color:green;">Phone Number</th>
+            <th style="background-color:green;">Title</th>
+            <th style="background-color:green;">Note</th>
+            <th style="background-color:green;">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for contact in contacts %}
+        <tr>
+            <td>{{ contact.id }}</td>
+            <td>{{ contact.firstName }}</td>
+            <td>{{ contact.lastName }}</td>
+            <td>{{ contact.email }}</td>
+            <td>{{ contact.phoneNumber }}</td>
+            <td>{{ contact.titleName }}</td>
+            <td>{{ contact.note }}</td>
+            <td>
+                <a href="{{ path('app_contact_show', {'id': contact.id}) }}" class="show-btn">show</a>
+            </td>
+
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="8" class="no-records">No records found</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

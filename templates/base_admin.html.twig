@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+    <link rel="stylesheet" href="https://bootswatch.com/5/minty/bootstrap.min.css">
+    {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+
+    {% block stylesheets %}
+      
+        <style>
+            .navbar-nav {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+            }
+            
+            .nav-link {
+                padding: 0 10px;
+            }
+            
+            .container-fluid{
+                
+                justify-content: center;
+            
+        }
+            .divider {
+                margin-top: 2rem;
+                margin-bottom: 2rem;
+                border: none;
+                border-top: 1px solid #eee;
+            }
+
+            .badge-cart {
+                background-color: orange;
+                color: white;
+                font-size: 18px;
+            }
+
+            .search-form {
+                display: flex;
+                align-items: center;
+            }
+
+            .search-input {
+                margin-right: 10px;
+            }
+
+            .footer {
+                background-color: #f8f9fa;
+                padding: 30px 0;
+            }
+
+            .footer .row {
+                margin-top: 20px;
+            }
+
+            .footer h5 {
+                margin-bottom: 20px;
+            }
+
+            .footer ul {
+                padding-left: 0;
+                list-style: none;
+            }
+
+            .footer li {
+                margin-bottom: 10px;
+            }
+        </style>
+    {% endblock %}
+
+ 
+</head>
+{% block header %}
+<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">  
+    <div class="container-fluid justify-content-center">
+            <div class="collapse navbar-collapse " id="navbarColor02">
+                <a class="nav-item mx-2" href="http://127.0.0.1:8000/admin">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAABxklEQVR4nO2Xu0oDQRiFPwsvYGHvXSFipYVvoKLB1l6fQLT1HtDHsLJVULDUQhS0sYwXvBQh2oQIKl7BZGVglI2w2dlNNjvF/8FpdnZ/ztk5QzYgCFbSAkwCG0AWcAIqq5+d1LNqSi8wC+wDXyHMe+kbOANSwBBQF4V59bYWgIyPmbUAM9d9ZmWA+WruVBJ4MHyrT0DCYGYf8Gw48x4YrzSEqlAxYEXOgbYyM9uBy4Azi8BM2BAjQCFk3x+BZWAAaNYaBFb0WpiZBe0pEI3AdRUPcrV0BzQFCbJqgWnHQ2pXjegEXi0w7HjoHegxCbJrgVnHRzt+IcYsMOkYasIrRANwZYFBx1A3Xgd/0QJzTkCpr40SOiw/4I6H3oBud5BtC0yF1dZviFELzFSqpAqStsBIpUqrIKeGN+diMJgzvO9EBanXX7kvPjdPxRBk2uCwp/S34R+twKbHA4f6H1utgygOPNb2gC7KMAxcuB74BPr1WhxBEsCH69ptuV/1/6itWgLywJzrehxB0B7y2lNJjcISV5CqI0GQHYkGqRZSrWiQaiHVigapFlKtaJBqIdWKBqkWUq1okGphWbWOa7grR1EGEQTM+AG4/JlaJkixEwAAAABJRU5ErkJggg==">                    
+                </a>
+                
+                <ul class="navbar-nav mx-auto ">
+                    
+                    <li class="nav-item">
+                        <a class="btn btn-light" href="http://127.0.0.1:8000/product">Product Management</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class=" btn btn-light" href="http://127.0.0.1:8000/category">Category Management</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-light" href="http://127.0.0.1:8000/user">User Management</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-light" href="http://127.0.0.1:8000/order">Orders Management</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-light" href="http://127.0.0.1:8000/contact">Contact Management</a>
+                    </li>
+
+                  
+                </ul>
+            </div>
+            <form>
+                <a class="btn btn-light" href="/{{ app.user ? 'logout' : 'login' }}" @click="isOpen = false">
+                    {{ app.user ? 'logout' : 'Login'}}
+                </a>
+            </form>
+        </div>
+        </div>
+    </nav>
+    <hr class="divider">
+{% endblock %}
+
+
+{% block body %}{% endblock %}
+
+<hr class="divider">
+
+
+</body>
+</html>
